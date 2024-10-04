@@ -1,0 +1,10 @@
+.buttonDeskLabel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  column-gap: 4px;
+}
+
+.buttonMobileRoot {
+  padding: 0px;
+}
