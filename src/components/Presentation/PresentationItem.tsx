@@ -18,7 +18,7 @@ const presentationOptions = [
   }
 ]
 
-export function PresentationItem() {
+function PresentationItem() {
 
   const items = presentationOptions.map(option=>(
     <Accordion.Item  key={option.title} value={option.title}>
@@ -31,3 +31,5 @@ export function PresentationItem() {
     {items}
     </Accordion>;
 }
+
+export default PresentationItem;
