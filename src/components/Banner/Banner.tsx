@@ -1,7 +1,7 @@
 'use client';
 import NextImage from "next/image";
 import React from "react";
-import { Box, Button, Container, Image } from "@mantine/core";
+import { Box, Button, Container, Image, rem } from "@mantine/core";
 import classes from "./Banner.module.css";
 import Header from "../Headers/HeaderGuess/Header";
 
@@ -14,7 +14,7 @@ function Banner() {
       </Box>
       <Box visibleFrom="md" h={120} />
         <Image priority component={NextImage} src="/banner.png" width={1920} height={700} alt="Banner" />
-        <Button classNames={{root: classes.buttonRoot}}>Visitez un cimetière</Button>
+        <Button w={{base: '90%', md: rem(222)}} classNames={{root: classes.buttonRoot}}>Visitez un cimetière</Button>
       </Box>;
 }
 
