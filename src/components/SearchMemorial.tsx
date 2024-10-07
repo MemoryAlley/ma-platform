@@ -52,7 +52,7 @@ function SearchMemorial() {
               </Button>
             </Flex>
             <Flex justify='center' mt={{base: 0, md: -10}}>
-              <Button styles={{root: { width: rem(255) }}}>Rechercher le mémorial</Button>
+              <Button w={{base: '100%', md: rem(255)}}>Rechercher le mémorial</Button>
             </Flex>
           </Stack>;
 }
