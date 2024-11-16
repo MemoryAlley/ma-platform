@@ -1,0 +1,13 @@
+body {
+  background-image: url("/assets/chemin_1.png");
+  background-repeat: repeat-y;
+  background-position: center;
+  min-height: 100vh;
+  min-width: 100vw;
+  background-color: #509E16;
+  margin: 0;
+}
+
+html {
+  height: 100%;
+}

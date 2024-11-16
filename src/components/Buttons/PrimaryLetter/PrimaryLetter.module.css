@@ -1,0 +1,37 @@
+.root {
+  cursor: default;
+  padding-bottom: 2px;
+  padding-left: 0;
+  padding-right: 0;
+  outline: 3px solid var(--mantine-color-memorialBtn-0);
+  width: 102px;
+  height: 76px;
+  background: var(--mantine-color-memorialBtn-4);
+  border-radius: 5px;
+  transition: all 0.2s;
+
+  &:hover {
+    background: var(--mantine-color-memorialBtn-4);
+    /* padding-bottom: 0px; */
+  }
+}
+
+.inner {
+  background: var(--mantine-color-memorialBtn-5);
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  padding: 7px;
+
+  /* &:hover {
+    background: var(--mantine-color-memorialBtn-6);
+  } */
+}
+
+.label {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--mantine-color-memorialBtn-6);
+  border-radius: 5px;
+}

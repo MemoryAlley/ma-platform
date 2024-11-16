@@ -25,12 +25,14 @@ function SearchMemorial() {
                   {
                     (styles) => <Flex direction={{base: 'column', md: 'row'}} style={styles} justify='space-between' align={{base: 'flex-start', md: 'center'}}>
                       <DateInput
+                        clearable
                         locale="fr"
                         maxDate={maxDate}
                         leftSection={<IconCalendarMonth color={memoryAlleyColor} size={16} />}
                         variant="unstyled" placeholder="Date de naissance"
                       />
                       <DateInput
+                        clearable
                         locale="fr"
                         maxDate={maxDate}
                         leftSection={<IconCalendarMonth color={memoryAlleyColor} size={16} />} 
