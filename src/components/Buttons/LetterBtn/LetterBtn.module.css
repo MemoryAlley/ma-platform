@@ -1,0 +1,79 @@
+.root {
+  padding-bottom: 1.32px;
+  padding-left: 0;
+  padding-right: 0;
+  outline: 2px solid var(--mantine-color-memorialBtn-0);
+  width: 40px;
+  height: 40px;
+  background: var(--mantine-color-memorialBtn-7);
+  border-radius: 10px;
+  transition: all 0.2s;
+  &:hover {
+    background: var(--mantine-color-memorialBtn-9);
+    padding-bottom: 0px;
+  }
+}
+
+.root_clicked {
+  position: relative;
+  padding-bottom: 1.32px;
+  padding-left: 0;
+  padding-right: 0;
+  outline: 2px solid var(--mantine-color-memorialBtn-0);
+  width: 40px;
+  height: 40px;
+  background: var(--mantine-color-memorialLetterBtn-0);
+  border-radius: 10px;
+  transition: all 0.2s;
+
+  &:hover {
+    background: var(--mantine-color-memorialLetterBtn-3);
+    padding-bottom: 0px;
+  }
+}
+
+.inner {
+  background: var(--mantine-color-memorialBtn-8);
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  padding: 1.72px;
+
+  &:hover {
+    background: var(--mantine-color-memorialBtn-9);
+  }
+}
+
+.inner_clicked {
+  background: var(--mantine-color-memorialLetterBtn-2);
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  padding: 1.72px;
+
+  &:hover {
+    background: var(--mantine-color-memorialLetterBtn-3);
+  }
+}
+
+.label {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--mantine-color-memorialBtn-9);
+  color: var(--mantine-color-memorialBtn-0);
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 10px;
+}
+
+.label_clicked {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--mantine-color-memorialLetterBtn-3);
+  color: var(--mantine-color-memorialBtn-0);
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 10px;
+}

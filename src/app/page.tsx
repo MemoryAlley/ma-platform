@@ -2,11 +2,12 @@
 import { Flex, Stack, Text, Box, Title, Container, Anchor } from "@mantine/core";
 import { IconMapPin } from '@tabler/icons-react';
 
-import PresentationItem from "../components/Presentation/PresentationItem";
+import PresentationItem from "@/components/Presentation/PresentationItem";
 import Map from "@/components/Map";
 import SearchMemorial from "@/components/SearchMemorial";
 import Banner from "@/components/Banner/Banner";
 import Footer from "@/components/Footer/Footer";
+import Link from "next/link";
 
 
 
@@ -36,7 +37,7 @@ export default function Home() {
                   <Text c="gray.8">Cliquez sur un lieu pour explorer le cimetière local</Text>
                 </Flex>
                 <Text>Où</Text>
-                <Anchor href="/create" title="Créer un monument" c="memoryAlley" underline="always">Cliquez ici pour créer un monument funéraire</Anchor>
+                <Anchor component={Link} href="/cimetery" title="Créer un monument" c="memoryAlley" underline="always">Cliquez ici pour créer un monument funéraire</Anchor>
               </Stack>
             </Stack>
           </Flex>
