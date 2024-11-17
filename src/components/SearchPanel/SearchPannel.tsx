@@ -12,7 +12,7 @@ function SearchPannel() {
   const handleClickOnLetter = (v: string | undefined) => {
     setActiveLetter(v);
   }
-  return <Box pos="absolute" right={0}>
+  return <Box pos="fixed" right={0} style={{zIndex: 999}}>
     <Stack px={20} py={40} align="center" justify="center">
       <PrimaryLetter />
       <SimpleGrid cols={2} spacing={10}>
@@ -26,7 +26,6 @@ function SearchPannel() {
           )
         }
       </SimpleGrid>
-      <LetterBtn action={() => console.log('Search...')} />
       <Box mt={20}>
         <MemorialBtn label="Créer" />
       </Box>
