@@ -5,11 +5,13 @@ import classes from "./cimetery.module.css";
 import Image from "next/image";
 import BackBtn from "@/components/Buttons/BackBtn/BackBtn";
 import CimeterySpace from "@/components/CimeterySpace/CimeterySpace";
+import { GhostComponent } from "@/components/Ghost/Ghost";
 
 
 function Cimetery() {
   return <Box component="body" pos="relative" className={classes.cimetery_bg}>
       <BackBtn />
+      <GhostComponent />
       <Flex justify="space-around" pt={64}>
         <Image src="/assets/controls.png" width={213} height={410} alt="controls_1" />
         <Image src="/assets/controls.png" width={213} height={410} alt="controls_2" />
