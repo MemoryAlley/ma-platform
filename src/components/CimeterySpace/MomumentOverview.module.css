@@ -1,0 +1,14 @@
+.momument_container {
+  padding: 20px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  border-top-right-radius: 100px;
+  border: 2px solid #111;
+  min-width: 300px;
+  max-width: 300px;
+  margin: 200px;
+}
+
+.monument_image {
+  border-top-right-radius: 30%;
+}

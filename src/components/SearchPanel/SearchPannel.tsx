@@ -12,23 +12,24 @@ function SearchPannel() {
   const handleClickOnLetter = (v: string | undefined) => {
     setActiveLetter(v);
   }
-  return <Box pos="fixed" right={0} style={{zIndex: 999}}>
-    <Stack px={20} py={40} align="center" justify="center">
-      <PrimaryLetter />
-      <SimpleGrid cols={2} spacing={10}>
-        {
-          alphabet.map((letter, i) => <LetterBtn
-              key={i}
-              label={letter}
-              isActive={letter === activeLetter}
-              action={handleClickOnLetter}
-            />
-          )
-        }
-      </SimpleGrid>
-      <Box mt={20}>
-        <MemorialBtn label="Créer" />
-      </Box>
+  return <Box pos="fixed" right={0} style={{ zIndex: 999 }}>
+    <Stack px={20} py={40} mih="100vh" justify="space-between">
+      <Stack align="center" justify="center">
+        <PrimaryLetter />
+        <SimpleGrid cols={2} spacing={10}>
+          {
+            alphabet.map((letter, i) => <LetterBtn
+                key={i}
+                label={letter}
+                isActive={letter === activeLetter}
+                action={handleClickOnLetter}
+              />
+            )
+          }
+        </SimpleGrid>
+        <LetterBtn action={() => console.log('Search...')} />
+      </Stack>
+      <MemorialBtn label="Créer" />
     </Stack>
   </Box>;
 }
