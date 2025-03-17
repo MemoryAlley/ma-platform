@@ -10,7 +10,7 @@ import Image from "next/image";
 export function GhostComponent() {
   const pathname = usePathname()
   const [ghostPosition, setGhostPosition] = useState({ x: 400, y: 300 });
-  const [activeMonument, setActiveMonument] = useState<Monument | null>(null);
+  const [_activeMonument, setActiveMonument] = useState<Monument | null>(null);
 
   useEffect(() => {
     const handleKeyPress = (e: KeyboardEvent) => {
