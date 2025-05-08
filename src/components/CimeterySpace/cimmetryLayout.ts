@@ -198,6 +198,82 @@ type CimmetryItem = {
       years: "1943 - 1983",
       image: "https://randomuser.me/api/portraits/men/20.jpg",
     },
+
+
+    // v2
+    {
+      imgSrc: "/assets/grave_2.svg",
+      isSmall: true,
+      grave: true,
+      name: "Eleanor Rigby v222",
+      description: "She kept her face in a jar by the door.",
+      years: "1930 - 1966",
+      image: "https://randomuser.me/api/portraits/women/1.jpg",
+    },
+    {
+      imgSrc: "/assets/grave_2.svg",
+      isSmall: true,
+      grave: true,
+      name: "Maxwell Edison",
+      description: "Bang, bang, Maxwell's silver hammer came down upon her head.",
+      years: "1945 - 1970",
+      image: "https://randomuser.me/api/portraits/men/2.jpg",
+    },
+    {
+      imgSrc: "/assets/grave_2.svg",
+      isSmall: true,
+      grave: true,
+      name: "Lucy Diamond",
+      description: "In the sky with diamonds.",
+      years: "1950 - 1980",
+      image: "https://randomuser.me/api/portraits/women/3.jpg",
+    },
+    {
+      imgSrc: "/assets/grave_2.svg",
+      isSmall: true,
+      grave: true,
+      name: "Desmond Jones",
+      description: "Ob-La-Di, Ob-La-Da, life goes on.",
+      years: "1920 - 1990",
+      image: "https://randomuser.me/api/portraits/men/4.jpg",
+    },
+
+    {
+      imgSrc: "/assets/grave_2.svg",
+      isSmall: true,
+      grave: true,
+      name: "Eleanor Rigby v222",
+      description: "She kept her face in a jar by the door.",
+      years: "1930 - 1966",
+      image: "https://randomuser.me/api/portraits/women/1.jpg",
+    },
+    {
+      imgSrc: "/assets/grave_2.svg",
+      isSmall: true,
+      grave: true,
+      name: "Maxwell Edison",
+      description: "Bang, bang, Maxwell's silver hammer came down upon her head.",
+      years: "1945 - 1970",
+      image: "https://randomuser.me/api/portraits/men/2.jpg",
+    },
+    {
+      imgSrc: "/assets/grave_2.svg",
+      isSmall: true,
+      grave: true,
+      name: "Lucy Diamond",
+      description: "In the sky with diamonds.",
+      years: "1950 - 1980",
+      image: "https://randomuser.me/api/portraits/women/3.jpg",
+    },
+    {
+      imgSrc: "/assets/grave_2.svg",
+      isSmall: true,
+      grave: true,
+      name: "Desmond Jones",
+      description: "Ob-La-Di, Ob-La-Da, life goes on.",
+      years: "1920 - 1990",
+      image: "https://randomuser.me/api/portraits/men/4.jpg",
+    },
   ];
   
 
@@ -433,25 +509,72 @@ type CimmetryItem = {
     },
     { imgSrc: "/assets/bench_1.png", isMedium: true, rotate: true, rotateRatio: "90deg" },
   ];
-  
-  
 
-  export function injectGravesIntoLayout(gravesFromBackend: CimmetryItem[], templateLayout: CimmetryItem[]): CimmetryItem[] {
-    const result: CimmetryItem[] = [];
-    let graveIndex = 0;
+
+
+  const decorationItems: CimmetryItem[] = [
+    { imgSrc: "/assets/stone_1.png", isMedium: true },
+    { imgSrc: "/assets/stone_2.png", isSmall: true },
+    { imgSrc: "/assets/splash.png", isSmall: true },
+    { imgSrc: "/assets/lantern_1.png", isMidLarge: true },
+    { imgSrc: "/assets/lantern_2.png", isMidLarge: true },
+    { imgSrc: "/assets/tree_1.png", isLarge: true },
+    { imgSrc: "/assets/ground_1.png", isSmall: true },
+    { imgSrc: "/assets/ground_3.png", isSmall: true },
+    { imgSrc: "/assets/ground_4.png", isSmall: true },
+    { imgSrc: "/assets/ground_5.png", isSmall: true },
+    { imgSrc: "/assets/ground_6.png", isSmall: true },
+    { imgSrc: "/assets/ground_8.png", isSmall: true },
+    { imgSrc: "/assets/ground_9.png", isSmall: true },
+  ];
   
-    for (const item of templateLayout) {
-      if (item.grave) {
-        if (graveIndex < gravesFromBackend.length) {
-          result.push(gravesFromBackend[graveIndex]);
-          graveIndex++;
-        } else {
-          result.push({ ...item, name: "Unknown", description: "No data", years: "N/A" });
-        }
+  export function generateCimmetryLayout(
+    backendGraves: CimmetryItem[],
+    mockData: CimmetryItem[]
+  ): CimmetryItem[] {
+    const output: CimmetryItem[] = [];
+    const allowedGraveIndexes = [1, 3, 6, 8]; // 0-based positions per row for graves
+    const placeholderIndexes = [4, 5]; // 0-based
+    const decorationIndexes = [0, 2, 7, 9]; // 0-based
+  
+    // const mockGraveCount = mockData.filter((item) => item.grave).length;
+    const totalGraves = backendGraves.length;
+  
+    let gravePointer = 0;
+  
+    // 1. Fill mockData graves
+    for (let i = 0; i < mockData.length; i++) {
+
+      const mockDataGraves=mockData.slice(0,i+1)?.filter((item)=>item.grave)
+      
+      if(mockDataGraves.length===backendGraves.length)
+      {break}
+
+      if (mockData[i].grave && gravePointer < totalGraves) {
+        output.push({ ...backendGraves[gravePointer++] });
       } else {
-        result.push(item);
+        output.push(mockData[i]);
       }
     }
   
-    return result;
+    // 2. Add extra graves if needed
+    while (gravePointer < totalGraves) {
+      const row: CimmetryItem[] = new Array(10).fill(null);
+  
+      for (let i = 0; i < 10; i++) {
+        if (allowedGraveIndexes.includes(i) && gravePointer < totalGraves) {
+          row[i] = { ...backendGraves[gravePointer++] };
+        } else if (placeholderIndexes.includes(i)) {
+          row[i] = { isPlaceholder: true };
+        } else if (decorationIndexes.includes(i)) {
+          row[i] = decorationItems[Math.floor(Math.random() * decorationItems.length)];
+        } else {
+          row[i] = { isSimplePlaceholder: true }; // default fallback
+        }
+      }
+  
+      output.push(...row);
+    }
+  
+    return output;
   }

@@ -3,7 +3,7 @@ import React from "react";
 import { Box, SimpleGrid } from "@mantine/core";
 import Image from "next/image";
 import { MomumentOverview } from "./MomumentOverview";
-import { originalGravesData,cimmetryLayoutMock,injectGravesIntoLayout } from "./cimmetryLayout";
+import { originalGravesData,cimmetryLayoutMock ,generateCimmetryLayout} from "./cimmetryLayout";
 
 
 
@@ -14,7 +14,7 @@ function CimeterySpace() {
     <SimpleGrid cols={10} spacing={20}>
 
 
-      {injectGravesIntoLayout(originalGravesData, cimmetryLayoutMock).map((item, index) =>
+      {generateCimmetryLayout(originalGravesData, cimmetryLayoutMock).map((item, index) =>
         (item?.isPlaceholder || item?.isSimplePlaceholder) ? <Box component="div" key={index} h={item?.isPlaceholder ? 256 : 0} w={item?.isPlaceholder ? 256 : 0} /> :
           <Box key={index} id={item?.grave ? `grave-${index + 1}` : ""} className={item?.grave ? "grave" : ""} style={{ height: "fit-content", width: "fit-content", position: "relative" }}>
             <Image
