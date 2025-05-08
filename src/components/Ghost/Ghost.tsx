@@ -3,14 +3,14 @@ import { Box } from "@mantine/core";
 import { useEffect, useState } from "react";
 import "./ghost.css"
 import { usePathname } from "next/navigation";
-import { Monument } from "@/types/monument";
-import { monuments } from "@/data/monuments";
+// import { Monument } from "@/types/monument";
+// import { monuments } from "@/data/monuments";
 import Image from "next/image";
 
 export function GhostComponent() {
   const pathname = usePathname()
   const [ghostPosition, setGhostPosition] = useState({ x: 400, y: 300 });
-  const [, setActiveMonument] = useState<Monument | null>(null);
+  // const [, setActiveMonument] = useState<Monument | null>(null);
 
   useEffect(() => {
     const handleKeyPress = (e: KeyboardEvent) => {
@@ -36,16 +36,51 @@ export function GhostComponent() {
 
       setGhostPosition(newPosition);
 
-      // Check for monument collision
-      const nearbyMonument = monuments.find(monument => {
-        const distance = Math.sqrt(
-          Math.pow(newPosition.x - monument.position.x, 2) +
-          Math.pow(newPosition.y - monument.position.y, 2)
-        );
-        return distance < 25;
-      });
+      const graves = document.querySelectorAll<HTMLElement>('.grave');
 
-      setActiveMonument(nearbyMonument || null);
+      const scrollX = window.scrollX || window.pageXOffset;
+      const scrollY = window.scrollY || window.pageYOffset;
+      
+      const ghostViewportX = newPosition.x - scrollX;
+      const ghostViewportY = newPosition.y - scrollY;
+      
+      const ghostRect = {
+        left: ghostViewportX,
+        top: ghostViewportY,
+        width: 50,
+        height: 50
+      };
+      
+
+      graves.forEach((grave) => {
+        const rect = grave.getBoundingClientRect();
+
+        // Collision detection
+        const graveId = grave?.id?.split("-")[1] || ""
+
+        const element = document.getElementById(`monument${graveId}`);
+
+        if (
+          ghostRect.left >= rect.left &&
+          ghostRect.left < rect.right &&
+          ghostRect.top >= rect.top &&
+          ghostRect.top < rect.bottom
+        ) {
+          // Collision detected
+          // console.log(`Ghost touched grave with id: ${grave.id}`);
+          if (element) {
+            element.style.display = "block"
+
+          }
+        }
+        else {
+          if (element) {
+            element.style.display = "none"
+          }
+
+
+        }
+      });
     };
     if (pathname === '/cimetery') {
       window.addEventListener('keydown', handleKeyPress);
