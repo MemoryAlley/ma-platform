@@ -533,16 +533,16 @@ type CimmetryItem = {
     mockData: CimmetryItem[]
   ): CimmetryItem[] {
     const output: CimmetryItem[] = [];
-    const allowedGraveIndexes = [1, 3, 6, 8]; // 0-based positions per row for graves
-    const placeholderIndexes = [4, 5]; // 0-based
-    const decorationIndexes = [0, 2, 7, 9]; // 0-based
+    const allowedGraveIndexes = [1, 3, 6, 8]; 
+    const placeholderIndexes = [4, 5]; 
+    const decorationIndexes = [0, 2, 7, 9];
   
     // const mockGraveCount = mockData.filter((item) => item.grave).length;
     const totalGraves = backendGraves.length;
   
     let gravePointer = 0;
   
-    // 1. Fill mockData graves
+
     for (let i = 0; i < mockData.length; i++) {
 
       const mockDataGraves=mockData.slice(0,i+1)?.filter((item)=>item.grave)
@@ -557,7 +557,7 @@ type CimmetryItem = {
       }
     }
   
-    // 2. Add extra graves if needed
+
     while (gravePointer < totalGraves) {
       const row: CimmetryItem[] = new Array(10).fill(null);
   
