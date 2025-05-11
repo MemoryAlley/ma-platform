@@ -3,5 +3,5 @@ export interface Monument {
   name: string;
   years: string;
   description: string;
-  position: { x: number; y: number };
+  image:string;
 }
