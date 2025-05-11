@@ -11,7 +11,7 @@ import { GhostComponent } from "@/components/Ghost/Ghost";
 function Cimetery() {
   return <Box component="body" pos="relative" className={classes.cimetery_bg}>
       <BackBtn />
-      <GhostComponent />
+      <GhostComponent/>
       <Flex justify="space-around" pt={64}>
         <Image src="/assets/controls.png" width={213} height={410} alt="controls_1" />
         <Image src="/assets/controls.png" width={213} height={410} alt="controls_2" />
